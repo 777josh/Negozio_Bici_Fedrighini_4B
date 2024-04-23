@@ -1,7 +1,7 @@
 classi:
--app
--bici
--negozio
+-App
+-Bici
+-Negozio
 -EccezionePosizioneNonValida 
 -EccezionePosizioneOccupata 
 -EccezionePosizioneVuota 
