@@ -15,6 +15,7 @@ attributi:
 -taglia
 -colore
 -data uscita
+-IDBici
 
 metodi:
 -aggiungi bici(posizione)
