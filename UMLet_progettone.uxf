@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>230</x>
+      <y>220</y>
+      <w>100</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>Negoziante</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>360</x>
+      <y>70</y>
+      <w>230</w>
+      <h>560</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>380</x>
+      <y>80</y>
+      <w>190</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Aggiungi Bici</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>380</x>
+      <y>130</y>
+      <w>190</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Visualizza Bici (Posizione)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>380</x>
+      <y>230</y>
+      <w>190</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Elimina Bici (Posizione)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>380</x>
+      <y>180</y>
+      <w>190</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Visualizza Bici (Marca)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>380</x>
+      <y>280</y>
+      <w>190</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Elenco Bici	</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>380</x>
+      <y>330</y>
+      <w>190</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Elenco Bici Ordinato (Taglia)	</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>380</x>
+      <y>380</y>
+      <w>190</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Scrivi su File CSV	</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>380</x>
+      <y>430</y>
+      <w>190</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Scrivi su File Binario	</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>380</x>
+      <y>480</y>
+      <w>190</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Leggi da File CSV	</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>380</x>
+      <y>530</y>
+      <w>190</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Leggi da File Binario	</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>270</x>
+      <y>90</y>
+      <w>130</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;170.0;110.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>270</x>
+      <y>140</y>
+      <w>130</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;120.0;110.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>270</x>
+      <y>190</y>
+      <w>130</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;70.0;110.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>270</x>
+      <y>230</y>
+      <w>130</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;30.0;110.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>270</x>
+      <y>250</y>
+      <w>130</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;110.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>270</x>
+      <y>250</y>
+      <w>130</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;110.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>270</x>
+      <y>250</y>
+      <w>130</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;110.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>270</x>
+      <y>250</y>
+      <w>130</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;110.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>270</x>
+      <y>250</y>
+      <w>130</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;110.0;250.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>270</x>
+      <y>250</y>
+      <w>130</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;110.0;300.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>710</x>
+      <y>70</y>
+      <w>340</w>
+      <h>250</h>
+    </coordinates>
+    <panel_attributes>_Bici_
+--
+	 -marca: String
+    -modello: String
+    -taglia: String
+    -colore: String
+    -dataUscita: String
+    -IDBici: String
+
+    +Bici(marca: String, modello: String,
+    taglia: String, colore: String, dataUscita: String)
+    +getMarca(): String
+    +getModello(): String
+    +getTaglia(): String
+    +getColore(): String
+    +getDataUscita(): String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>710</x>
+      <y>370</y>
+      <w>340</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>_Negozio_
+--
++aggiungi bici(posizione)
++visualizza bici(posizione)
++visualizza bici(marca)
++elimina bici(posizione)
++elenco bici
++elenco bici ordinato(taglia)
++scrivi su file csv
++scrivi su file binario
++leggi da file csv
++leggi da file binario</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>380</x>
+      <y>580</y>
+      <w>190</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Modifica bici</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>270</x>
+      <y>250</y>
+      <w>130</w>
+      <h>370</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;110.0;350.0</additional_attributes>
+  </element>
+</diagram>
