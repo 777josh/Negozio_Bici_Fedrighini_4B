@@ -18,10 +18,10 @@ attributi:
 -IDBici
 
 metodi:
--aggiungi bici(posizione)
--visualizza bici(posizione)
+-aggiungi bici(ID)
+-visualizza bici(ID)
 -visualizza bici(marca)
--elimina bici(posizione)
+-elimina bici(ID)
 -elenco bici
 -elenco bici ordinato(taglia)
 -scrivi su file csv
