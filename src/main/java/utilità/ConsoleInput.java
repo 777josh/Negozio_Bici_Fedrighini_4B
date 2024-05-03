@@ -7,8 +7,12 @@ package utilità;
 import java.io.*;
 
 /**
- *
- * @author josh
+ * Classe che rappresenta una Console di Input (tastiera)
+ * Un oggeto istanza della classe Console Input espone dei metodi
+ * che consentono di acquisire dalla tastiera 
+ * variabili di ciascun tipo di dato nativo (int, short, double ecc...) 
+ * e oggetti di tipo String.
+ * @author Plona
  */
 public class ConsoleInput
 {
