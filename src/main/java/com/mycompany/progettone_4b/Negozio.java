@@ -14,6 +14,8 @@ import eccezioni.EccezionePosizioneVuota;
 import eccezioni.EccezioneTagliaNonValida;
 import eccezioni.FileException;
 import java.io.IOException;
+import utilità.ConsoleInput;
+import utilità.Ordinatore;
 import utilità.TextFile;
 
 public class Negozio {
@@ -154,6 +156,89 @@ public class Negozio {
         // Elimina la bicicletta dalla posizione specificata
         bici[posizione] = null;
     }
+    
+    public void modificaBici(Negozio negozio, ConsoleInput tastiera) throws EccezioneTagliaNonValida, EccezionePosizioneOccupata {
+    try {
+        // Chiedi all'utente la posizione della bicicletta da modificare
+        System.out.println("Inserisci la posizione della bicicletta da modificare:");
+        int posizione = tastiera.readInt();
+
+        // Ottieni la bicicletta dalla posizione specificata
+        Bici biciDaModificare = negozio.getBici(posizione);
+
+        if (biciDaModificare != null) {
+            int scelta;
+            do {
+                // Mostra un menu per la modifica dei parametri
+                System.out.println("Cosa desideri modificare?");
+                System.out.println("1. Marca");
+                System.out.println("2. Modello");
+                System.out.println("3. Taglia");
+                System.out.println("4. Colore");
+                System.out.println("5. Data di Uscita");
+                System.out.println("0. Esci e Salva");
+
+                // Leggi la scelta dell'utente
+                scelta = tastiera.readInt();
+
+                // Modifica il parametro corrispondente in base alla scelta
+                switch (scelta) {
+                    case 1:
+                        System.out.print("Nuova marca: ");
+                        String nuovaMarca = tastiera.readString();
+                        biciDaModificare.setMarca(nuovaMarca);
+                        break;
+                    case 2:
+                        System.out.print("Nuovo modello: ");
+                        String nuovoModello = tastiera.readString();
+                        biciDaModificare.setModello(nuovoModello);
+                        break;
+                    case 3:
+                        try{
+                        System.out.print("Nuova taglia: ");
+                        String nuovaTaglia = tastiera.readString();
+                        biciDaModificare.setTaglia(nuovaTaglia);
+                        }catch(EccezioneTagliaNonValida e)
+                        {
+                            System.out.println("Taglia non corretta");    
+                        }
+                        break;
+                    case 4:
+                        System.out.print("Nuovo colore: ");
+                        String nuovoColore = tastiera.readString();
+                        biciDaModificare.setColore(nuovoColore);
+                        break;
+                    case 5:
+                        System.out.print("Nuova data di uscita (GG/MM/AAAA): ");
+                        String nuovaDataUscita = tastiera.readString();
+                        biciDaModificare.setDataUscita(nuovaDataUscita);
+                        break;
+                    case 0:
+                        // Esci e salva le modifiche
+                        negozio.setBici(biciDaModificare, posizione);
+                        System.out.println("Modifiche salvate.");
+                        break;
+                    default:
+                        System.out.println("Scelta non valida.");
+                }
+            } while (scelta != 0);
+        } else {
+            System.out.println("Nessuna bicicletta trovata in quella posizione.");
+        }
+    } catch (IOException ex) 
+    {
+        
+    } catch (EccezionePosizioneNonValida ex) 
+    {
+        System.out.println("Posizione non valida");
+    }catch (EccezionePosizioneVuota ex)
+    {
+        System.out.println("Posizione vuota");
+    }catch (EccezionePosizioneOccupata ex)
+    {
+        System.out.println("Posizione occupata");
+    }
+}
 
     /**
      * Restituisce il numero di biciclette attualmente presenti nel negozio.
@@ -248,20 +333,19 @@ public class Negozio {
      * @param taglia La taglia della bicicletta.
      * @return Un intero che rappresenta l'ordine della taglia della bicicletta.
      */
-    private static int ElencoBiciOrdinatoPerTaglia(String taglia) {
-        switch (taglia) {
-            case "xs":
-                return 1;
-            case "s":
-                return 2;
-            case "m":
-                return 3;
-            case "l":
-                return 4;
-            case "xl":
-                return 5;
-            default:
-                return 0;
+    public static void ordinaBiciPerTaglia(Bici[] biciArray) throws EccezioneTagliaNonValida {
+        // Creiamo un array di taglie corrispondenti alle bici
+        String[] taglie = new String[biciArray.length];
+        for (int i = 0; i < biciArray.length; i++) {
+            taglie[i] = biciArray[i].getTaglia();
+        }
+
+        // Ordiniamo l'array di taglie in ordine crescente
+        String[] taglieOrdinate = Ordinatore.bubbleSortCrescente(taglie);
+
+        // Assegniamo le taglie ordinate alle bici nell'array originale
+        for (int i = 0; i < biciArray.length; i++) {
+            biciArray[i].setTaglia(taglieOrdinate[i]);
         }
     }
 
