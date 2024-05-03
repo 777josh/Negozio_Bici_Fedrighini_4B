@@ -20,9 +20,11 @@ public class Negozio {
 
     private final static int NUM_MAX_BICI = 100;
     private Bici[] bici;
-
+    private Bici[] elencoBici;
+    
     public Negozio() {
         bici = new Bici[NUM_MAX_BICI];
+        this.elencoBici = new Bici[NUM_MAX_BICI];
     }
 
     public Negozio(Negozio n) {
@@ -110,6 +112,10 @@ public class Negozio {
 
     public int getNumMaxBici() {
         return NUM_MAX_BICI;
+    }
+    
+    public Bici[] getElencoBici() {
+        return this.elencoBici;
     }
 
     public String[] visualizzaBiciMarca(String marcaDaCercare) {
