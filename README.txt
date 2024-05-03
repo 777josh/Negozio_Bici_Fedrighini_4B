@@ -5,6 +5,7 @@ classi:
 -EccezionePosizioneNonValida 
 -EccezionePosizioneOccupata 
 -EccezionePosizioneVuota 
+-EccezioneTagliaNonValida
 -ConsoleInput 
 -Menu 
 -Ordinatore
@@ -18,10 +19,10 @@ attributi:
 -IDBici
 
 metodi:
--aggiungi bici(ID)
--visualizza bici(ID)
+-aggiungi bici(Posizione)
+-visualizza bici(Posizione)
 -visualizza bici(marca)
--elimina bici(ID)
+-elimina bici(Posizione)
 -elenco bici
 -elenco bici ordinato(taglia)
 -scrivi su file csv
