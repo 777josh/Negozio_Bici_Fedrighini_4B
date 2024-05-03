@@ -51,6 +51,7 @@ public class App {
                 case 0:
                     System.out.println("Hai scelto: Esci");
                     break;
+                    
                 case 1:
                     try {
                     do {
@@ -73,7 +74,19 @@ public class App {
                 }
                 break;
                 case 2:
-
+                    System.out.println("Inserisci la marca da cercare:");
+                    String marcaDaCercare = tastiera.readString();
+                    String[] biciMarca = n1.visualizzaBiciMarca(marcaDaCercare);
+                    if (biciMarca != null) {
+                        System.out.println("Biciclette della marca " + marcaDaCercare + ":");
+                        for (String biciInfo : biciMarca) {
+                            System.out.println(biciInfo);
+                        }
+                    } else {
+                        System.out.println("Nessuna bicicletta trovata per la marca " + marcaDaCercare);
+                    }
+                    break;
+                    
                 case 3:
                     try {
 
@@ -85,17 +98,17 @@ public class App {
                     colore = tastiera.readString();
 
                     do {
-                        //try
-                        {
-                            System.out.print("Taglia --> ");
+                        try {
+                            System.out.print("Taglia(XS,S,M,L,XL) --> ");
                             taglia = tastiera.readString();
+                            if (!taglia.equals("XS") && !taglia.equals("S") && !taglia.equals("M") && !taglia.equals("L") && !taglia.equals("XL")) {
+                                throw new EccezioneTagliaNonValida();
+                            }
                             break;
-                        }
-                        /*catch(EccezioneTagliaNonValida ex)
-                            {
-                                System.out.println("Taglia non corretto.");
-                            }*/
+                        } catch (EccezioneTagliaNonValida ex) {
+                            System.out.println("Taglia non corretta.");
 
+                        }
                     } while (true);
 
                     do {
@@ -128,17 +141,30 @@ public class App {
                     System.out.println("Posizione occupata!");
                 }
                 break;
+                
                 case 4:
-
+                try {
+                    System.out.print("Inserisci la posizione della bicicletta da eliminare: ");
+                    posizione = tastiera.readInt();
+                    n1.EliminaBici(posizione);
+                    System.out.println("Bicicletta eliminata correttamente.");
+                } catch (EccezionePosizioneNonValida ex) {
+                    System.out.println("La posizione inserita non è valida.");
+                } catch (EccezionePosizioneVuota ex) {
+                    System.out.println("Non c'è nessuna bicicletta nella posizione specificata.");
+                }
+                break;
+                
                 case 5:
                     System.out.println("Elenco delle biciclette nel negozio:");
-                    Bici[] elencoBici = n1.getElencoBici();
+                    Bici[] elencoBici = n1.elencoBici();
                     for (int i = 0; i < elencoBici.length; i++) {
                         if (elencoBici[i] != null) {
                             System.out.println("Posizione " + i + ": " + elencoBici[i].toString());
                         }
                     }
                     break;
+                    
                 case 6:
 
                 case 7:

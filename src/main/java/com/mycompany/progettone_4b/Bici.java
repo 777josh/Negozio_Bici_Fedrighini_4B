@@ -78,7 +78,7 @@ public class Bici {
     }
 
     public void setTaglia(String taglia) throws EccezioneTagliaNonValida{
-        if (!taglia.equals("xs") && !taglia.equals("s") && !taglia.equals("m") &&!taglia.equals("l") && !taglia.equals("xl")) {
+        if (!taglia.equals("XS") && !taglia.equals("S") && !taglia.equals("M") &&!taglia.equals("L") && !taglia.equals("XL")) {
             throw new EccezioneTagliaNonValida();
         }
         this.taglia = taglia;
@@ -100,6 +100,8 @@ public class Bici {
         this.dataUscita = dataUscita;
     }
 
+    
+    
     @Override
     public String toString() {
         return "Bici{" + "idBici=" + idBici + ", marca=" + marca + ", modello=" + modello + ", taglia=" + taglia + ", colore=" + colore + ", dataUscita=" + dataUscita + '}';
