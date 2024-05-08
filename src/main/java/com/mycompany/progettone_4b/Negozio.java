@@ -14,11 +14,12 @@ import eccezioni.EccezionePosizioneVuota;
 import eccezioni.EccezioneTagliaNonValida;
 import eccezioni.FileException;
 import java.io.IOException;
+import java.io.Serializable;
 import utilità.ConsoleInput;
 import utilità.Ordinatore;
 import utilità.TextFile;
 
-public class Negozio {
+public class Negozio implements Serializable {
 
     // Numero massimo di biciclette che il negozio può contenere
     private final static int NUM_MAX_BICI = 100;
@@ -27,7 +28,7 @@ public class Negozio {
     // Array per memorizzare l'elenco delle biciclette
     private Bici[] elencoBici;
     // Numero attuale di biciclette nel negozio
-    private int numeroBici;
+    private int numBici;
 
     /**
      * Costruttore di default per la classe Negozio.
@@ -35,7 +36,7 @@ public class Negozio {
     public Negozio() {
         bici = new Bici[NUM_MAX_BICI];
         this.elencoBici = new Bici[NUM_MAX_BICI];
-        this.numeroBici = 0;
+        this.numBici = 0;
     }
 
     /**
@@ -144,7 +145,7 @@ public class Negozio {
      * @throws EccezionePosizioneVuota Se la posizione non contiene una
      * bicicletta.
      */
-    public void EliminaBici(int posizione) throws EccezionePosizioneNonValida, EccezionePosizioneVuota {
+    public void eliminaBici(int posizione) throws EccezionePosizioneNonValida, EccezionePosizioneVuota {
         // Verifica se la posizione è valida
         if (posizione < 0 || posizione >= NUM_MAX_BICI) {
             throw new EccezionePosizioneNonValida();
@@ -155,90 +156,86 @@ public class Negozio {
         }
         // Elimina la bicicletta dalla posizione specificata
         bici[posizione] = null;
+        numBici--;
     }
-    
+
     public void modificaBici(Negozio negozio, ConsoleInput tastiera) throws EccezioneTagliaNonValida, EccezionePosizioneOccupata {
-    try {
-        // Chiedi all'utente la posizione della bicicletta da modificare
-        System.out.println("Inserisci la posizione della bicicletta da modificare:");
-        int posizione = tastiera.readInt();
+        try {
+            // Chiedi all'utente la posizione della bicicletta da modificare
+            System.out.println("Inserisci la posizione della bicicletta da modificare:");
+            int posizione = tastiera.readInt();
 
-        // Ottieni la bicicletta dalla posizione specificata
-        Bici biciDaModificare = negozio.getBici(posizione);
+            // Ottieni la bicicletta dalla posizione specificata
+            Bici biciDaModificare = negozio.getBici(posizione);
 
-        if (biciDaModificare != null) {
-            int scelta;
-            do {
-                // Mostra un menu per la modifica dei parametri
-                System.out.println("Cosa desideri modificare?");
-                System.out.println("1. Marca");
-                System.out.println("2. Modello");
-                System.out.println("3. Taglia");
-                System.out.println("4. Colore");
-                System.out.println("5. Data di Uscita");
-                System.out.println("0. Esci e Salva");
+            if (biciDaModificare != null) {
+                int scelta;
+                do {
+                    // Mostra un menu per la modifica dei parametri
+                    System.out.println("Cosa desideri modificare?");
+                    System.out.println("1. Marca");
+                    System.out.println("2. Modello");
+                    System.out.println("3. Taglia");
+                    System.out.println("4. Colore");
+                    System.out.println("5. Data di Uscita");
+                    System.out.println("0. Esci e Salva");
 
-                // Leggi la scelta dell'utente
-                scelta = tastiera.readInt();
+                    // Leggi la scelta dell'utente
+                    scelta = tastiera.readInt();
 
-                // Modifica il parametro corrispondente in base alla scelta
-                switch (scelta) {
-                    case 1:
-                        System.out.print("Nuova marca: ");
-                        String nuovaMarca = tastiera.readString();
-                        biciDaModificare.setMarca(nuovaMarca);
-                        break;
-                    case 2:
-                        System.out.print("Nuovo modello: ");
-                        String nuovoModello = tastiera.readString();
-                        biciDaModificare.setModello(nuovoModello);
-                        break;
-                    case 3:
-                        try{
-                        System.out.print("Nuova taglia: ");
-                        String nuovaTaglia = tastiera.readString();
-                        biciDaModificare.setTaglia(nuovaTaglia);
-                        }catch(EccezioneTagliaNonValida e)
-                        {
-                            System.out.println("Taglia non corretta");    
+                    // Modifica il parametro corrispondente in base alla scelta
+                    switch (scelta) {
+                        case 1:
+                            System.out.print("Nuova marca: ");
+                            String nuovaMarca = tastiera.readString();
+                            biciDaModificare.setMarca(nuovaMarca);
+                            break;
+                        case 2:
+                            System.out.print("Nuovo modello: ");
+                            String nuovoModello = tastiera.readString();
+                            biciDaModificare.setModello(nuovoModello);
+                            break;
+                        case 3:
+                        try {
+                            System.out.print("Nuova taglia: ");
+                            String nuovaTaglia = tastiera.readString();
+                            biciDaModificare.setTaglia(nuovaTaglia);
+                        } catch (EccezioneTagliaNonValida e) {
+                            System.out.println("Taglia non corretta");
                         }
                         break;
-                    case 4:
-                        System.out.print("Nuovo colore: ");
-                        String nuovoColore = tastiera.readString();
-                        biciDaModificare.setColore(nuovoColore);
-                        break;
-                    case 5:
-                        System.out.print("Nuova data di uscita (GG/MM/AAAA): ");
-                        String nuovaDataUscita = tastiera.readString();
-                        biciDaModificare.setDataUscita(nuovaDataUscita);
-                        break;
-                    case 0:
-                        // Esci e salva le modifiche
-                        negozio.setBici(biciDaModificare, posizione);
-                        System.out.println("Modifiche salvate.");
-                        break;
-                    default:
-                        System.out.println("Scelta non valida.");
-                }
-            } while (scelta != 0);
-        } else {
-            System.out.println("Nessuna bicicletta trovata in quella posizione.");
+                        case 4:
+                            System.out.print("Nuovo colore: ");
+                            String nuovoColore = tastiera.readString();
+                            biciDaModificare.setColore(nuovoColore);
+                            break;
+                        case 5:
+                            System.out.print("Nuova data di uscita (GG/MM/AAAA): ");
+                            String nuovaDataUscita = tastiera.readString();
+                            biciDaModificare.setDataUscita(nuovaDataUscita);
+                            break;
+                        case 0:
+                            // Esci e salva le modifiche
+                            negozio.setBici(biciDaModificare, posizione);
+                            System.out.println("Modifiche salvate.");
+                            break;
+                        default:
+                            System.out.println("Scelta non valida.");
+                    }
+                } while (scelta != 0);
+            } else {
+                System.out.println("Nessuna bicicletta trovata in quella posizione.");
+            }
+        } catch (IOException ex) {
+
+        } catch (EccezionePosizioneNonValida ex) {
+            System.out.println("Posizione non valida");
+        } catch (EccezionePosizioneVuota ex) {
+            System.out.println("Posizione vuota");
+        } catch (EccezionePosizioneOccupata ex) {
+            System.out.println("Posizione occupata");
         }
-    } catch (IOException ex) 
-    {
-        
-    } catch (EccezionePosizioneNonValida ex) 
-    {
-        System.out.println("Posizione non valida");
-    }catch (EccezionePosizioneVuota ex)
-    {
-        System.out.println("Posizione vuota");
-    }catch (EccezionePosizioneOccupata ex)
-    {
-        System.out.println("Posizione occupata");
     }
-}
 
     /**
      * Restituisce il numero di biciclette attualmente presenti nel negozio.
@@ -246,14 +243,14 @@ public class Negozio {
      * @return Il numero di biciclette nel negozio.
      */
     public int getNumBici() {
-        int cont = 0;
+        int numBici = 0;
         // Conta il numero di biciclette non nulle nell'array bici
         for (int i = 0; i < this.getNumMaxBici(); i++) {
             if (bici[i] != null) {
-                cont++;
+                numBici++;
             }
         }
-        return cont;
+        return numBici;
     }
 
     /**
@@ -337,7 +334,13 @@ public class Negozio {
         // Creiamo un array di taglie corrispondenti alle bici
         String[] taglie = new String[biciArray.length];
         for (int i = 0; i < biciArray.length; i++) {
-            taglie[i] = biciArray[i].getTaglia();
+            // Verifica se biciArray[i] è null prima di chiamare getTaglia()
+            if (biciArray[i] != null) {
+                taglie[i] = biciArray[i].getTaglia();
+            } else {
+                // Gestione del caso in cui biciArray[i] sia null
+                // Ad esempio, puoi impostare una taglia di default o lasciare taglie[i] a null
+            }
         }
 
         // Ordiniamo l'array di taglie in ordine crescente
@@ -368,7 +371,7 @@ public class Negozio {
                 // Ottiene la bicicletta nella posizione corrente
                 b = this.getBici(i);
                 // Costruisce la stringa dei dati della bicicletta nel formato CSV
-                dBici = i + ";" + b.getIdBici() + ";" + b.getMarca() + ";" + b.getModello() + ";" + b.getTaglia() + ";" + b.getDataUscita();
+                dBici = i + ";" + b.getIdBici() + ";" + b.getMarca() + ";" + b.getModello() + ";" + b.getColore() + ";" + b.getTaglia() + ";" + b.getDataUscita();
                 // Scrive la stringa nel file CSV
                 f1.toFile(dBici);
             } catch (EccezionePosizioneVuota ex) {
@@ -410,8 +413,8 @@ public class Negozio {
                 idBici = Integer.parseInt(dBici[1]);
                 marca = dBici[2];
                 modello = dBici[3];
-                taglia = dBici[4];
-                colore = dBici[5];
+                colore = dBici[4];
+                taglia = dBici[5];
                 dataUscita = dBici[6];
                 // Crea un nuovo oggetto Bici con i dati estratti
                 b = new Bici(marca, modello, taglia, colore, dataUscita);

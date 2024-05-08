@@ -17,189 +17,125 @@ import utilità.ConsoleInput;
  * @author josfe
  */
 public class NegozioTest {
-    
+
     public NegozioTest() {
     }
-    
+
     @BeforeAll
     public static void setUpClass() {
     }
-    
+
     @AfterAll
     public static void tearDownClass() {
     }
-    
+
     @BeforeEach
     public void setUp() {
     }
-    
+
     @AfterEach
     public void tearDown() {
     }
 
-    /**
-     * Test of getBici method, of class Negozio.
-     */
     @Test
     public void testGetBici() throws Exception {
-        System.out.println("getBici");
-        int posizione = 0;
-        Negozio instance = new Negozio();
-        Bici expResult = null;
-        Bici result = instance.getBici(posizione);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Negozio negozio = new Negozio();
+        Bici bici1 = new Bici("Marca1", "Modello1", "M", "Nero", "01/01/2024");
+        negozio.setBici(bici1, 0);
+        assertEquals(bici1, negozio.getBici(0));
     }
 
-    /**
-     * Test of setBici method, of class Negozio.
-     */
     @Test
     public void testSetBici() throws Exception {
-        System.out.println("setBici");
-        Bici bici = null;
-        int posizione = 0;
-        Negozio instance = new Negozio();
-        instance.setBici(bici, posizione);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Negozio negozio = new Negozio();
+        Bici bici1 = new Bici("Marca1", "Modello1", "M", "Nero", "01/01/2024");
+        negozio.setBici(bici1, 0);
+        assertEquals(bici1, negozio.getBici(0));
     }
 
-    /**
-     * Test of EliminaBici method, of class Negozio.
-     */
     @Test
     public void testEliminaBici() throws Exception {
-        System.out.println("EliminaBici");
-        int posizione = 0;
-        Negozio instance = new Negozio();
-        instance.EliminaBici(posizione);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Negozio negozio = new Negozio();
+        Bici bici1 = new Bici("Marca1", "Modello1", "M", "Nero", "01/01/2024");
+        Bici bici2 = new Bici("Marca2", "Modello2", "L", "Rosso", "02/02/2024");
+        negozio.setBici(bici1, 0);
+        negozio.setBici(bici2, 1);
+
+        int numBiciBeforeDeletion = negozio.getNumBici();
+        negozio.eliminaBici(0);
+
+        assertNull(negozio.getBici(0)); 
+        assertEquals(bici2, negozio.getBici(1)); 
+        assertEquals(numBiciBeforeDeletion - 1, negozio.getNumBici()); 
+        assertNull(negozio.getBici(numBiciBeforeDeletion)); 
     }
 
-    /**
-     * Test of modificaBici method, of class Negozio.
-     */
     @Test
     public void testModificaBici() throws Exception {
-        System.out.println("modificaBici");
-        Negozio negozio = null;
-        ConsoleInput tastiera = null;
-        Negozio instance = new Negozio();
-        instance.modificaBici(negozio, tastiera);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // Non implementato in NegozioTest in quanto richiede input da tastiera
     }
 
-    /**
-     * Test of getNumBici method, of class Negozio.
-     */
     @Test
-    public void testGetNumBici() {
-        System.out.println("getNumBici");
-        Negozio instance = new Negozio();
-        int expResult = 0;
-        int result = instance.getNumBici();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testGetNumBici() throws Exception {
+        Negozio negozio = new Negozio();
+        Bici bici1 = new Bici("Marca1", "Modello1", "M", "Nero", "01/01/2024");
+        negozio.setBici(bici1, 0);
+        assertEquals(1, negozio.getNumBici());
     }
 
-    /**
-     * Test of getNumMaxBici method, of class Negozio.
-     */
     @Test
     public void testGetNumMaxBici() {
-        System.out.println("getNumMaxBici");
-        Negozio instance = new Negozio();
-        int expResult = 0;
-        int result = instance.getNumMaxBici();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Negozio negozio = new Negozio();
+        assertEquals(100, negozio.getNumMaxBici());
     }
 
-    /**
-     * Test of elencoBici method, of class Negozio.
-     */
     @Test
-    public void testElencoBici() {
-        System.out.println("elencoBici");
-        Negozio instance = new Negozio();
-        Bici[] expResult = null;
-        Bici[] result = instance.elencoBici();
-        assertArrayEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testElencoBici() throws Exception {
+        Negozio negozio = new Negozio();
+        Bici bici1 = new Bici("Marca1", "Modello1", "M", "Nero", "01/01/2024");
+        Bici bici2 = new Bici("Marca2", "Modello2", "L", "Rosso", "02/02/2024");
+        negozio.setBici(bici1, 0);
+        negozio.setBici(bici2, 1);
+        Bici[] expected = {bici1, bici2};
+        assertArrayEquals(expected, negozio.elencoBici());
     }
 
-    /**
-     * Test of visualizzaBiciMarca method, of class Negozio.
-     */
     @Test
-    public void testVisualizzaBiciMarca() {
-        System.out.println("visualizzaBiciMarca");
-        String marcaDaCercare = "";
-        Negozio instance = new Negozio();
-        String[] expResult = null;
-        String[] result = instance.visualizzaBiciMarca(marcaDaCercare);
-        assertArrayEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testVisualizzaBiciMarca() throws Exception {
+        Negozio negozio = new Negozio();
+        Bici bici1 = new Bici("Marca1", "Modello1", "M", "Nero", "01/01/2024");
+        Bici bici2 = new Bici("Marca2", "Modello2", "L", "Rosso", "02/02/2024");
+        negozio.setBici(bici1, 0);
+        negozio.setBici(bici2, 1);
+        String[] expected = {"Marca1", "Marca2"};
+        assertArrayEquals(expected, negozio.visualizzaBiciMarca(""));
     }
 
-    /**
-     * Test of ordinaBiciPerTaglia method, of class Negozio.
-     */
     @Test
     public void testOrdinaBiciPerTaglia() throws Exception {
-        System.out.println("ordinaBiciPerTaglia");
-        Bici[] biciArray = null;
-        Negozio.ordinaBiciPerTaglia(biciArray);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Negozio negozio = new Negozio();
+        Bici bici1 = new Bici("Marca1", "Modello1", "M", "Nero", "01/01/2024");
+        Bici bici2 = new Bici("Marca2", "Modello2", "L", "Rosso", "02/02/2024");
+        Bici[] biciArray = {bici2, bici1};
+        negozio.ordinaBiciPerTaglia(biciArray);
+        assertEquals("L", biciArray[0].getTaglia());
+        assertEquals("M", biciArray[1].getTaglia());
     }
 
-    /**
-     * Test of esportaCSV method, of class Negozio.
-     */
     @Test
     public void testEsportaCSV() throws Exception {
-        System.out.println("esportaCSV");
-        String nomeFile = "";
-        Negozio instance = new Negozio();
-        instance.esportaCSV(nomeFile);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // Non implementato in NegozioTest in quanto coinvolge l'interazione con il file system
     }
 
-    /**
-     * Test of importaDaCSV method, of class Negozio.
-     */
     @Test
     public void testImportaDaCSV() throws Exception {
-        System.out.println("importaDaCSV");
-        String nomeFile = "";
-        Negozio instance = new Negozio();
-        instance.importaDaCSV(nomeFile);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // Non implementato in NegozioTest in quanto coinvolge l'interazione con il file system
     }
 
-    /**
-     * Test of toString method, of class Negozio.
-     */
     @Test
     public void testToString() {
-        System.out.println("toString");
-        Negozio instance = new Negozio();
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Negozio negozio = new Negozio();
+        String expected = "Numero di biciclette presenti: 0";
+        assertEquals(expected, negozio.toString());
     }
-    
 }

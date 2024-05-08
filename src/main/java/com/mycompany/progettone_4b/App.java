@@ -14,7 +14,7 @@ import eccezioni.*;
 public class App {
 
     public static void main(String[] args) throws IOException {
-        int numeroVociMenu = 11;
+        int numeroVociMenu = 12;
         String[] vociMenu = new String[numeroVociMenu];
         int scelta;
         Menu menu;
@@ -32,7 +32,7 @@ public class App {
         Bici[] elencoBiciOrdinatoPerTaglia;
         String[] VisualizzaBiciMarca;
         String nomeFileCSV = "bici.csv";
-        String nomeFileBinario="Negozio.bin";
+        String nomeFileBinario= "Negozio.bin";
 
         vociMenu[0] = "0 -->\tEsci";
         vociMenu[1] = "1 -->\tAggiungi Bici(posizione)";
@@ -40,12 +40,12 @@ public class App {
         vociMenu[3] = "3 -->\tVisualizza Bici(Marca)";
         vociMenu[4] = "4 -->\tElimina Bici (posizione)";
         vociMenu[5] = "5 -->\tModifica Bici(posizione)";
-        vociMenu[5] = "6 -->\tMostra elenco bici";
-        vociMenu[6] = "7 -->\tMostra elenco bici ordinato per taglia";
-        vociMenu[7] = "8 -->\tEsporta bici in formato CSV";
-        vociMenu[8] = "9 -->\tImporta bici in formato CSV";
-        vociMenu[9] = "10 -->\tEsporta bici in formato binario";
-        vociMenu[10] = "11 -->\tImporta bici in formato binario";
+        vociMenu[6] = "6 -->\tMostra elenco bici";
+        vociMenu[7] = "7 -->\tMostra elenco bici ordinato per taglia";
+        vociMenu[8] = "8 -->\tEsporta bici in formato CSV";
+        vociMenu[9] = "9 -->\tImporta bici in formato CSV";
+        vociMenu[10] = "10 -->\tEsporta bici in formato binario";
+        vociMenu[11] = "11 -->\tImporta bici in formato binario";
 
         menu = new Menu(vociMenu);
 
@@ -152,7 +152,7 @@ public class App {
                 try {
                     System.out.print("Inserisci la posizione della bicicletta da eliminare: ");
                     posizione = tastiera.readInt();
-                    n1.EliminaBici(posizione);
+                    n1.eliminaBici(posizione);
                     System.out.println("Bicicletta eliminata correttamente.");
                 } catch (EccezionePosizioneNonValida ex) {
                     System.out.println("La posizione inserita non è valida.");
@@ -217,7 +217,7 @@ public class App {
                 case 10://Esporta bici in formato binario
                 try {
                     ObjectOutputStream writer = new ObjectOutputStream(new FileOutputStream(nomeFileBinario));
-                    writer.writeObject(n1);
+                writer.writeObject(n1);
                     writer.flush();
                     writer.close();
                     System.out.println("Salvataggio avvenuto correttamente");
